@@ -28,7 +28,6 @@ const createCabin = async (cabin) => {
 
   if (error) {
     console.error(error);
-    throw new Error('Task Failed: Could Not Create Cabin');
   }
 
   return data;
