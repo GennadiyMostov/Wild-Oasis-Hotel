@@ -20,4 +20,18 @@ const deleteCabin = async (id) => {
   }
 };
 
-export { getCabins, deleteCabin };
+const createCabin = async (cabin) => {
+  const { data, error } = await supabase
+    .from('cabins')
+    .insert([cabin])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error('Task Failed: Could Not Create Cabin');
+  }
+
+  return data;
+};
+
+export { getCabins, deleteCabin, createCabin };
