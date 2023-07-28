@@ -34,11 +34,11 @@ function CreateCabinForm() {
 
   const onSubmit = (data) => {
     console.log(data);
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
   };
 
   const onError = (errors) => {
-    console.log(errors);
+    // console.log(errors);
   };
 
   return (
@@ -47,14 +47,16 @@ function CreateCabinForm() {
         <Input
           type='text'
           id='name'
+          disabled={isCreating}
           {...register('name', { required: 'This Field Is Required' })}
         />
       </FormRow>
 
-      <FormRow label='maxCapacity' error={errors?.maxCapacity?.message}>
+      <FormRow label='Max Capacity' error={errors?.maxCapacity?.message}>
         <Input
           type='number'
           id='maxCapacity'
+          disabled={isCreating}
           {...register('maxCapacity', {
             required: 'This Field Is Required',
             min: { value: 1, message: 'Capacity Must Be At Least 1' },
@@ -62,10 +64,11 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow label='regularPrice' error={errors?.regularPrice?.message}>
+      <FormRow label='Regular Price' error={errors?.regularPrice?.message}>
         <Input
           type='number'
           id='regularPrice'
+          disabled={isCreating}
           {...register('regularPrice', {
             required: 'This Field Is Required',
             min: { value: 1, message: 'Capacity Must Be At Least 1' },
@@ -73,16 +76,18 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow label='discount' error={errors?.discount?.message}>
+      <FormRow label='Discount' error={errors?.discount?.message}>
         <Input
           type='number'
           id='discount'
+          disabled={isCreating}
           defaultValue={0}
           {...register('discount', {
             required: 'This Field Is Required',
             validate: (value) => {
+              if (value === '0') return;
               return (
-                value <= getValues().regularPrice ||
+                Number(value) <= Number(getValues().regularPrice) ||
                 'Discount Must Be Less Than Regular Price'
               );
             },
@@ -90,17 +95,22 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow label='description' error={errors?.description?.message}>
+      <FormRow label='Description' error={errors?.description?.message}>
         <Textarea
           type='number'
           id='description'
+          disabled={isCreating}
           defaultValue=''
           {...register('description')}
         />
       </FormRow>
 
-      <FormRow label='image' error={errors?.image?.mesage}>
-        <FileInput id='image' accept='image/*' />
+      <FormRow label='Image' error={errors?.image?.mesage}>
+        <FileInput
+          id='image'
+          accept='image/*'
+          {...register('image', { required: true })}
+        />
       </FormRow>
 
       <FormRow>
