@@ -36,12 +36,12 @@ function CreateCabinForm() {
     mutate({ ...data, image: data.image[0] });
   };
 
-  const onError = (errors) => {
-    // console.log(errors);
-  };
+  // const onError = (errors) => {
+  // console.log(errors);
+  // };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label='Cabin Name' error={errors?.name?.message}>
         <Input
           type='text'
