@@ -12,8 +12,8 @@ const AddCabin = () => {
         {showModal ? 'Cancel' : 'Add New Cabin'}
       </Button>
       {showModal && (
-        <Modal>
-          <CreateCabinForm />
+        <Modal onCloseModal={() => setShowModal(false)}>
+          <CreateCabinForm onCloseModal={() => setShowModal(false)} />
         </Modal>
       )}
     </div>
