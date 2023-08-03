@@ -33,7 +33,7 @@ const CabinTable = () => {
   if (filterValue === 'all') {
     filteredCabins = cabins;
   }
-  console.log(cabins);
+
   if (filterValue === 'no-discount') {
     filteredCabins = cabins.filter((cabin) => {
       return cabin.discount === 0;
