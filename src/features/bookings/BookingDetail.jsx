@@ -56,9 +56,11 @@ function BookingDetail() {
         )}
         <Button
           variation='secondary'
-          onClick={status === 'checked-in' ? () => navigate('/') : moveBack}
+          onClick={
+            status === 'checked-in' ? () => navigate('/bookings') : moveBack
+          }
         >
-          {status === 'checked-in' ? 'Dashboard' : 'Back'}
+          {status === 'checked-in' ? 'Back To Bookings' : 'Back'}
         </Button>
       </ButtonGroup>
     </>
