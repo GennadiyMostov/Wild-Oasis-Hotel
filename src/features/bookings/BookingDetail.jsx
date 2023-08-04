@@ -34,6 +34,8 @@ function BookingDetail() {
     'checked-out': 'silver',
   };
 
+  console.log(status);
+
   return (
     <>
       <Row type='horizontal'>
@@ -52,8 +54,11 @@ function BookingDetail() {
             Check In
           </Button>
         )}
-        <Button variation='secondary' onClick={moveBack}>
-          Back
+        <Button
+          variation='secondary'
+          onClick={status === 'checked-in' ? () => navigate('/') : moveBack}
+        >
+          {status === 'checked-in' ? 'Dashboard' : 'Back'}
         </Button>
       </ButtonGroup>
     </>
