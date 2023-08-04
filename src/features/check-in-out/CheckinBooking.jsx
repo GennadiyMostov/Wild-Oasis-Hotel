@@ -37,7 +37,7 @@ const CheckinBooking = () => {
 
   const moveBack = useMoveBack();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || isLoadingSettings) return <Spinner />;
 
   const {
     id: bookingId,
@@ -54,7 +54,18 @@ const CheckinBooking = () => {
   function handleCheckin() {
     if (!confirmPaid) return;
 
-    checkIn(bookingId);
+    if (addBreakfast) {
+      checkIn({
+        bookingId,
+        breakfast: {
+          hasBreakfast: true,
+          extrasPrice: optionalBreakfastPrice,
+          totalPrice: totalPrice + optionalBreakfastPrice,
+        },
+      });
+    } else {
+      checkIn({ bookingId, breakfast: {} });
+    }
   }
 
   return (
@@ -103,7 +114,7 @@ const CheckinBooking = () => {
 
       <ButtonGroup>
         <Button onClick={handleCheckin} disabled={!confirmPaid || isCheckingIn}>
-          Check in booking # {bookingId}
+          Check In Booking # {bookingId}
         </Button>
         <Button variation='secondary' onClick={moveBack}>
           Back
