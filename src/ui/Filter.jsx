@@ -41,6 +41,12 @@ const Filter = ({ filterField, options }) => {
 
   const handleClick = (value) => {
     searchParams.set(filterField, value);
+
+    //reset page number when filter changes
+    if (searchParams.get) {
+      searchParams.set('page', 1);
+    }
+
     setSearchParams(searchParams);
   };
 

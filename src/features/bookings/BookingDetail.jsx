@@ -14,6 +14,8 @@ import Spinner from '../../ui/Spinner';
 import { useNavigate } from 'react-router-dom';
 import { HiArrowUpOnSquare } from 'react-icons/hi2';
 import useCheckout from '../check-in-out/useCheckout';
+import useDeleteBooking from './useDeleteBooking';
+import { toast } from 'react-hot-toast';
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -21,7 +23,14 @@ const HeadingGroup = styled.div`
   align-items: center;
 `;
 
+const StyledSpan = styled.span`
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+`;
+
 function BookingDetail() {
+  const { deleteBooking, isDeletingBooking } = useDeleteBooking();
   const { checkOut, isCheckingOut } = useCheckout();
   const { data: booking, isLoading } = useBooking();
   const moveBack = useMoveBack();
@@ -64,6 +73,32 @@ function BookingDetail() {
             }}
           >
             Check Out
+          </Button>
+        )}
+        {status === 'checked-out' && (
+          <Button
+            icon={<HiArrowUpOnSquare />}
+            disabled={isDeletingBooking}
+            onClick={() => {
+              toast((t) => (
+                <div>
+                  <p>Are you sure you want to delete this booking?</p>
+                  <StyledSpan>
+                    <Button
+                      onClick={() => {
+                        deleteBooking(bookingId);
+                        toast.dismiss(t.id);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                    <Button onClick={() => toast.dismiss(t.id)}>Cancel</Button>
+                  </StyledSpan>
+                </div>
+              ));
+            }}
+          >
+            Delete Booking
           </Button>
         )}
         <Button variation='secondary' onClick={() => navigate('/bookings')}>
