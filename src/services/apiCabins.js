@@ -16,7 +16,9 @@ const deleteCabin = async (id) => {
 
   if (error) {
     console.error(error);
-    throw new Error('Cabins Could Not Be Deleted');
+    throw new Error(
+      'Cabins could not be deleted, check to see if bookings for this cabin exist first.'
+    );
   }
 };
 
