@@ -99,8 +99,8 @@ function BookingDetail() {
           ''
         )}
 
-        <Button variation='secondary' onClick={() => navigate('/bookings')}>
-          Back To Bookings
+        <Button variation='secondary' onClick={() => navigate('/dashboard')}>
+          Back To Dashboard
         </Button>
       </ButtonGroup>
     </>
