@@ -10,8 +10,6 @@ function Dashboard() {
 
   if (isLoading) return <Spinner />;
 
-  console.log(bookings);
-
   return (
     <>
       <Row type='horizontal'>

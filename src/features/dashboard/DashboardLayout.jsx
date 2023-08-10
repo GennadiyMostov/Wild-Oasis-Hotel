@@ -37,7 +37,7 @@ const DashboardLayout = () => {
       />
       <div>Todays Activity</div>
       <div>Chart Stay Durations</div>
-      <SalesChart />
+      <SalesChart bookings={bookings} numDays={numDays} />
     </StyledDashboardLayout>
   );
 };
