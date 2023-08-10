@@ -11,9 +11,9 @@ const DarkModeProvider = ({ children }) => {
   };
 
   return (
-    <DarkModeContext.Provide value={{ isDarkMode }}>
+    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
       {children}
-    </DarkModeContext.Provide>
+    </DarkModeContext.Provider>
   );
 };
 
@@ -21,9 +21,7 @@ const useDarkMode = () => {
   const context = useContext(DarkModeContext);
 
   if (context === undefined)
-    throw new Error(
-      'Dark mode context was used outside of dark mode provider.'
-    );
+    throw new Error('DarkModeContext was used outside of the DarkModeProvider');
 
   return context;
 };
