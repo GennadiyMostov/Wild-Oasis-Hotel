@@ -49,7 +49,6 @@ const Amount = styled.div`
 function BookingRow({
   booking: {
     id: bookingId,
-    created_at,
     startDate,
     endDate,
     numNights,
@@ -76,6 +75,7 @@ function BookingRow({
       <Stacked>
         <span>{guestName}</span>
         <span>{email}</span>
+        <span>No. of guests: {numGuests}</span>
       </Stacked>
 
       <Stacked>

@@ -9,7 +9,6 @@ import {
   Tooltip,
 } from 'recharts';
 import { useDarkMode } from '../../context/DarkModeContext';
-import { subtractDates } from '../../utils/helpers';
 
 const ChartBox = styled.div`
   /* Box */

@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
 
   //1.) Load Authed User
-  const { isLoading, user, isAuthenticated } = useUser();
+  const { isLoading, isAuthenticated } = useUser();
 
   //3.) If there is NO authed user, redirect to the /login page
 

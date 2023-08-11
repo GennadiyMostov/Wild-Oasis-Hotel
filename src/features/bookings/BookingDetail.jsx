@@ -25,12 +25,6 @@ const HeadingGroup = styled.div`
   align-items: center;
 `;
 
-const StyledSpan = styled.span`
-  display: flex;
-  margin: 10px;
-  justify-content: space-between;
-`;
-
 function BookingDetail() {
   const { deleteBooking, isDeletingBooking } = useDeleteBooking();
   const { checkOut, isCheckingOut } = useCheckout();

@@ -20,6 +20,7 @@ const useCheckin = () => {
       navigate(`/bookings/${data.id}`);
     },
     onError: (err) => {
+      console.error(err);
       toast.error('An error occured while checking in.');
     },
   });
