@@ -14,6 +14,8 @@ Gennadiy
 
 To use:
 
+visit: https://gennas-wild-oasis.netlify.app/dashboard
+
 email: genna@example.com
 password: Password123!!!
 
